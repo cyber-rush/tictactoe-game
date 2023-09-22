@@ -1,6 +1,7 @@
 import { useState } from "react"
 import Board from './components/Board'
 import { calculateWinner } from "./winner"
+import StatusMessage from "./components/StatusMessage"
 
 
 function App() {
@@ -8,8 +9,6 @@ function App() {
   const [isXNext, setIsXNext] = useState(false) //As there are only 2 players -->if false --> 'O' else 'X'
 
   const winner = calculateWinner(squares)
-  const nextPlayer = isXNext ? 'X' : 'O'
-  const statusMessage = winner ? `Winner is ${winner}` : `Next Player is ${nextPlayer}`
 
   const handleSquareClick = (clickedPosition) => {
 
@@ -29,7 +28,7 @@ function App() {
     setIsXNext(currentIsXNext => !currentIsXNext)
   }
   return (<div className='app'>
-    <h2>{statusMessage}</h2>
+    <StatusMessage winner={winner} isXNext={isXNext} squares={squares} />
     <Board squares={squares} handleSquareClick={handleSquareClick} />
   </div>
   )
