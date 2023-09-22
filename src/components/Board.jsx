@@ -1,9 +1,10 @@
 import Square from "./Square"
 import '../styles.scss'
-const Board = ({ squares, handleSquareClick }) => {
+const Board = ({ squares, handleSquareClick, winningSquares }) => {
 
     const renderSquare = position => {
-        return <Square value={squares[position]} onClick={() => handleSquareClick(position)} />
+        const isWinningSquare = winningSquares.includes(position)
+        return <Square value={squares[position]} onClick={() => handleSquareClick(position)} isWinningSquare={isWinningSquare} />
     }
     return (
         <div className="board">
