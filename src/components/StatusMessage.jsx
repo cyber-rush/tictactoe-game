@@ -1,4 +1,5 @@
-const StatusMessage = ({ winner, isXNext, squares }) => {
+const StatusMessage = ({ winner, gamingBoard }) => {
+    const { squares, isXNext } = gamingBoard //Object destructuring of gamingBoard
     const noMovesLeft = squares.every(squareValue => squareValue !== null) //Return true value if each ele of the array follows the condition
     const nextPlayer = isXNext ? 'X' : 'O'
 
@@ -29,7 +30,7 @@ const StatusMessage = ({ winner, isXNext, squares }) => {
                 <span className={isXNext ? "text-green" : "text-orange"}>
                     {nextPlayer}
                 </span>
-            </ >)
+            </>)
         }
         return null
     }
